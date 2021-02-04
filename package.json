@@ -1,0 +1,15 @@
+{
+  "name": "todoapp-task",
+  "version": "1.0.0",
+  "description": "A todo application to organize and prioritize task , via draggable",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "todo",
+    "task"
+  ],
+  "author": "Peter Ihimire",
+  "license": "MIT"
+}
