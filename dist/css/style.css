@@ -1,0 +1,211 @@
+:root {
+  font-size: 62.5%;
+  --primary-color: #ab00d6;
+  --secondary-color: #ffeffe;
+  --red-color: #f02d2d;
+  --green-color: #36c000;
+  --main-black: #444;
+  --main-white: #fff;
+  --main-grey: #f4f4f4;
+  --dark-grey: rgb(219, 218, 218);
+  --main-spacing: 0.1;
+  --line-height: 1.3;
+  --main-transition: all 0.5s linear;
+
+  --font: "inter", sans-serif;
+  --font-bold: "inter-bold", sans-serif;
+  --font-lite: "inter-light", sans-serif;
+  --font-xlite: "inter-extralight", sans-serif;
+  --font-smbold: "inter-semibold", sans-serif;
+  --font-xbold: "inter-extrabold", sans-serif;
+
+  --sec-font: "roboto", sans-serif;
+  --sec-font-bold: "roboto-bold", sans-serif;
+  --sec-font-light: "roboto-light", sans-serif;
+  --sec-font-thin: "roboto-thin", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 117.6rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 31, 53, 0.7);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--secondary-color);
+  color: var(--main-black);
+  font-size: 1.4rem;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--sec-font);
+  letter-spacing: -2px;
+}
+
+/***** navbar *****/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  padding: 1.6rem 2rem;
+  background: var(--main-white);
+  color: var(--primary-color);
+  box-shadow: 0 0 .6rem 0 rgba(183, 182, 182, 0.849);
+}
+
+.navbar-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.navbar-logo {
+  margin: 0 7rem 0 0;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-family: var(--sec-font-bold);
+}
+
+.navbar-links {
+  height: 0;
+  overflow: hidden;
+  list-style-type: none;
+  transition: all 0.3s linear;
+}
+.navbar-links a {
+  display: block;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  list-style: none;
+  color: var(--primary-color);
+  text-align: left;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-family: var(--sec-font-bold);
+}
+/* .show-nav {
+  height: 14rem;
+} */
+.navbar-color {
+  background: var(--main-white);
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    padding: 1.6rem 2rem;
+    background: var(--main-white);
+    color: var(--primary-color);
+  }
+
+  .navbar-center {
+    max-width: 117rem;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  /* added */
+  .navbar-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .navbar-links {
+    height: 0;
+    overflow: hidden;
+    list-style-type: none;
+    transition: all 0.3s linear;
+  }
+  .navbar-links a {
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    list-style: none;
+    color: var(--primary-color);
+    text-align: left;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  .navbar-logo {
+    margin: 0 7rem 0 0;
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+  .navbar-logo a {
+    font-family: var(--sec-font-bold);
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar-color {
+    background: var(--main-white);
+    box-shadow: 0px 15px 55px rgba(0, 0, 0, 0.1);
+  }
+}
+@media screen and (min-width: 1170px) {
+  .navbar-links {
+    height: auto;
+    display: flex;
+    color: var(--primary-color);
+  }
+  .navbar-links a {
+    padding: 1rem 0rem;
+    margin: 0 1rem;
+  }
+  .navbar-btn {
+    display: none;
+  }
+}
+/***** end of navbar *****/
+
+/***** app *****/
+section.todo{
+  margin: 5rem 0 0 0;
+  padding: 5rem 0 0 0;
+}
+.todo-container h4{
+  color: var(--sec-font-bold)
+}
+/***** end of app *****/
+
