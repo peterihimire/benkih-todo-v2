@@ -307,11 +307,20 @@ button i {
   border-radius: 0.5rem;
   margin: 1rem;
   background-color: var(--main-white);
+  position: relative;
+  overflow: hidden;
+}
+.item:hover .item-edit {
+  right: 20px;
 }
 
 .item-edit {
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  right: -130px;
+  top: 19px;
+  transition: var(--main-transition);
 }
 
 .item-text {
@@ -331,7 +340,7 @@ button i {
 
 .icon {
   margin: 0 0 0 2rem;
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
   font-size: 3rem;
   background-color: var(--secondary-color);
   height: 5rem;
@@ -341,13 +350,15 @@ button i {
   box-shadow: 0 0.4rem 0.8rem 0 rgba(126, 13, 154, 0.781);
 }
 .fa-edit {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
+  color: var(--green-color);
   position: absolute;
   left: 12px;
   top: 9px;
 }
 .fa-trash {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
+  color: var(--red-color);
   position: absolute;
   left: 12px;
   top: 9px;
@@ -429,24 +440,18 @@ footer {
   will-change: transform;
   font-family: var(--sec-font);
   font-weight: 800;
-  /* height: 50px; */
   list-style-type: none;
-  /* margin: 10px; */
   background-color: white;
-  color: blue;
-  /* width: 250px; */
-  /* line-height: 3.2; */
-  /* padding-left: 10px; */
+  /* color: blue; */
   cursor: move;
   transition: all 200ms;
   user-select: none;
-  /* margin: 10px auto; */
   position: relative;
 }
 
 .draggable::after {
-  content: "drag me";
-  right: 7px;
+  /* content: "drag me"; */
+  /* right: 7px;
   font-size: 10px;
   position: absolute;
   cursor: pointer;
@@ -454,9 +459,9 @@ footer {
   transition: all 200ms;
   transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
   transform: translateX(120%);
-  opacity: 0;
+  opacity: 0; */
 }
-.draggable:hover::after {
+/* .draggable:hover::after {
   opacity: 1;
   transform: translate(0);
-}
+} */
