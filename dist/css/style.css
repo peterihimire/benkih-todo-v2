@@ -77,7 +77,7 @@ h4 {
   padding: 1.6rem 2rem;
   background: var(--main-white);
   color: var(--primary-color);
-  box-shadow: 0 0 .6rem 0 rgba(183, 182, 182, 0.849);
+  box-shadow: 0 0 0.6rem 0 rgba(183, 182, 182, 0.849);
 }
 
 .navbar-btn {
@@ -200,12 +200,114 @@ h4 {
 /***** end of navbar *****/
 
 /***** app *****/
-section.todo{
-  margin: 5rem 0 0 0;
-  padding: 5rem 0 0 0;
+#page-container {
+  position: relative;
+  min-height: 100vh;
 }
-.todo-container h4{
-  color: var(--sec-font-bold)
+#content-wrapper {
+  padding-bottom: 116px; /*Footer height*/
+}
+/* section.todo {
+  margin: 5rem 0 0 0;
+  padding: 5rem 2rem 0 2rem;
+} */
+.todo-center {
+  max-width: 117rem;
+  margin: 0 auto;
+  /* align-items: center; */
+}
+.todo-container {
+  padding: 15rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-container > * {
+  width: 100%;
+}
+.todo-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  max-width: 60rem;
+}
+
+.card-wrapper {
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(66, 66, 66, 0.781);
+  background: var(--main-white);
+  border-radius: 0.3rem;
+  width: 100%;
 }
 /***** end of app *****/
 
+/***** todo date *****/
+.todo-date {
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(66, 66, 66, 0.781);
+  color: var(--main-white);
+  background: var(--primary-color);
+  padding: 1.7rem;
+  text-align: center;
+  border-radius: 0.3rem;
+  margin: 0 0 4rem 0;
+  /* font-weight: bold; */
+}
+.todo-date p {
+  font-family: var(--sec-font-bold);
+}
+/***** end of todo date *****/
+
+/***** todo form  *****/
+form {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-gap: 0.5rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+.form-wrapper {
+  display: flex;
+}
+input[type="text"] {
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: none;
+  width: 100%;
+  margin: 1rem 0 0 0;
+  text-transform: lowercase;
+}
+
+button {
+  padding: 0.8rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: none;
+  color: var(--main-white);
+  margin: 1rem 0 1rem 1rem;
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(66, 66, 66, 0.781);
+  height: 4rem;
+  width: 4rem;
+}
+
+button i {
+  font-size: 1.8rem;
+}
+
+/***** end of todo form  *****/
+
+/***** footer section  *****/
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 116px; /*Footer height*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+  background: var(--primary-color);
+  color: var(--main-white);
+}
+
+/***** end of footer section  *****/

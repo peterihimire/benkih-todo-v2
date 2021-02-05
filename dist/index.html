@@ -4,46 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App Draggable</title>
+    <link rel="stylesheet" href="css/fontawesome.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/solid.css" />
+    <link rel="stylesheet" href="css/regular.css" />
+    <link rel="stylesheet" href="css/brands.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- navbar -->
-    <!-- <div class="nav-overlay"></div> -->
-    <nav class="navbar">
-      <div class="navbar-center">
-        <div class="navbar-container">
-          <div class="navbar-header">
-            <a href="#index" class="navbar-logo">
-              <!-- <img src="images/logo.png" alt="logo" /> -->
-              TODO APP
-            </a>
+    <div id="page-container">
+      <div id="content-wrapper">
+        <!-- navbar -->
+        <!-- <div class="nav-overlay"></div> -->
+        <nav class="navbar">
+          <div class="navbar-center">
+            <div class="navbar-container">
+              <div class="navbar-header">
+                <a href="#index" class="navbar-logo">
+                  <!-- <img src="images/logo.png" alt="logo" /> -->
+                  TODO APP
+                </a>
+              </div>
+
+              <ul class="navbar-links">
+                <li class="navbar-item">
+                  <a href="index.html">home</a>
+                </li>
+                <li class="navbar-item">
+                  <a href="task.html">reset</a>
+                </li>
+              </ul>
+
+              <button class="navbar-btn" type="button">
+                <img src="assets/menu-icon.svg" alt="" />
+              </button>
+            </div>
           </div>
+        </nav>
+        <!--end of navbar -->
+        <!-- main app -->
+        <section class="todo">
+          <div class="todo-center">
+            <div class="todo-container">
+              <div class="todo-wrapper">
+                <div class="todo-date">
+                  <p>Today</p>
+                </div>
 
-          <ul class="navbar-links">
-            <li class="navbar-item">
-              <a href="index.html">home</a>
-            </li>
-            <li class="navbar-item">
-              <a href="task.html">reset</a>
-            </li>
-          </ul>
+                <div class="card-wrapper" id="todo-box">
+                  <div class="todo-feedback"></div>
+                  <!-- This place will be coming from JavaScript -->
+                  <div class="form-wrapper" id="form-wrapper">
+                    <form class="form-group">
+                      <div class="">
+                        <input
+                          type="text"
+                          placeholder="enter new todo..."
+                          name="todo-input"
+                          class="todo-input"
+                          id="todo-input"
+                        />
+                      </div>
+                      <div class="">
+                        <button
+                          type="submit"
+                          class="todo-submit"
+                          id="todo-submit"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- end of main app -->
+      </div>
 
-          <button class="navbar-btn" type="button">
-            <img src="assets/menu-icon.svg" alt="" />
-          </button>
+      <!-- footer -->
+      <footer>
+        <div class="footer-center">
+          <div>
+            <p>Copyright &copy; 2020 | benkih</p>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!--end of navbar -->
-    <!-- main app -->
-    <section class="todo">
-      <div class="todo-center">
-        <div class="todo-container">
-          <h4>This is todo</h4>
-        </div>
-      </div>
-    </section>
-    <!-- end of main app -->
+      </footer>
+      <!-- end of footer -->
+    </div>
+
+    <script src="js/app.js"></script>
   </body>
 </html>
