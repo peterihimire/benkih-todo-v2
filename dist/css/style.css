@@ -302,7 +302,7 @@ button i {
   display: grid;
   grid-template-columns: 0.2fr 8fr 1fr;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 0.4rem 0.8rem 0 rgba(126, 13, 154, 0.781);
   border-radius: 0.5rem;
   margin: 1rem;
@@ -319,7 +319,7 @@ button i {
   justify-content: flex-end;
   position: absolute;
   right: -130px;
-  top: 19px;
+  top: 16px;
   transition: var(--main-transition);
 }
 

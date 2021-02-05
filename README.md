@@ -1,15 +1,16 @@
-# TODO APP DRAG & DROP
+# BENKIH TODO APP V2
 
 ## Table of contents
 
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
+- [Source](#source)
 - [Demo](#demo)
 
 ## General info
 
-This project is a frontend task, to create a todo app with drag and drop for task orginizing.
+This project is a frontend task, to create a todo app with drag and drop for task orginizing, and much more.
 
 ## Technologies
 
@@ -29,11 +30,10 @@ $ npm install
 $ npm start
 ```
 
-<!-- ## Sources
+## Sources
 
-This app is inspired by Rando Kim book „Time of Your Life”
-and Android app tutorial by [@eericon](https://www.eericon.github.io/post/timer-android) -->
+This app is inspired by Angela Yu todo list design from one of her Udemy course. [@angelayu](https://www.angelayu.com)
 
 ## Demo
 
-You can view the live demo of this application by visiting this [link](https://siesterliving.netlify.app) 
+You can view the live demo of this application by visiting this [link](https://benkih-todolist-v2.netlify.app)
