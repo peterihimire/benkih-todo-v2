@@ -36,9 +36,9 @@
                 </li>
               </ul>
 
-              <button class="navbar-btn" type="button">
+              <div class="navbar-btn" type="button">
                 <img src="assets/menu-icon.svg" alt="" />
-              </button>
+              </div>
             </div>
           </div>
         </nav>
@@ -54,13 +54,78 @@
 
                 <div class="card-wrapper" id="todo-box">
                   <div class="todo-feedback"></div>
+                  <div class="item">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+
                   <!-- This place will be coming from JavaScript -->
                   <div class="form-wrapper" id="form-wrapper">
                     <form class="form-group">
                       <div class="">
                         <input
                           type="text"
-                          placeholder="enter new todo..."
+                          placeholder="new todo..."
                           name="todo-input"
                           class="todo-input"
                           id="todo-input"
@@ -89,7 +154,7 @@
       <footer>
         <div class="footer-center">
           <div>
-            <p>Copyright &copy; 2020 | benkih</p>
+            <p>Copyright &copy; 2021 | Peter Ihimire Todo-App</p>
           </div>
         </div>
       </footer>
