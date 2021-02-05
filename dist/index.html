@@ -54,12 +54,19 @@
 
                 <div class="card-wrapper" id="todo-box">
                   <div class="todo-feedback"></div>
-                  <div class="item">
+                  <div
+                    class="item draggable"
+                    draggable="true"
+                    id="div1"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)"
+                    ondragstart="drag(event)"
+                  >
                     <div class="item-check check-slave" data-id="${todo.id}">
                       <input type="checkbox" class="todo-check" value="on" />
                     </div>
                     <div class="item-text">
-                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                      <p class="item-text-p" id="todo-display">Wash clothes</p>
                     </div>
                     <div class="item-edit">
                       <div class="icon" id="icon-edit" data-id="${todo.id}">
@@ -70,12 +77,19 @@
                       </div>
                     </div>
                   </div>
-                  <div class="item">
+                  <div
+                    class="item draggable"
+                    draggable="true"
+                    id="div1"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)"
+                    ondragstart="drag(event)"
+                  >
                     <div class="item-check check-slave" data-id="${todo.id}">
                       <input type="checkbox" class="todo-check" value="on" />
                     </div>
                     <div class="item-text">
-                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                      <p class="item-text-p" id="todo-display">eat breakfast</p>
                     </div>
                     <div class="item-edit">
                       <div class="icon" id="icon-edit" data-id="${todo.id}">
@@ -86,12 +100,19 @@
                       </div>
                     </div>
                   </div>
-                  <div class="item">
+                  <div
+                    class="item draggable"
+                    draggable="true"
+                    id="div1"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)"
+                    ondragstart="drag(event)"
+                  >
                     <div class="item-check check-slave" data-id="${todo.id}">
                       <input type="checkbox" class="todo-check" value="on" />
                     </div>
                     <div class="item-text">
-                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                      <p class="item-text-p" id="todo-display">play soccer</p>
                     </div>
                     <div class="item-edit">
                       <div class="icon" id="icon-edit" data-id="${todo.id}">
@@ -102,12 +123,19 @@
                       </div>
                     </div>
                   </div>
-                  <div class="item">
+                  <div
+                    class="item draggable"
+                    draggable="true"
+                    id="div1"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)"
+                    ondragstart="drag(event)"
+                  >
                     <div class="item-check check-slave" data-id="${todo.id}">
                       <input type="checkbox" class="todo-check" value="on" />
                     </div>
                     <div class="item-text">
-                      <p class="item-text-p" id="todo-display">Wash cloths</p>
+                      <p class="item-text-p" id="todo-display">take nap</p>
                     </div>
                     <div class="item-edit">
                       <div class="icon" id="icon-edit" data-id="${todo.id}">
@@ -160,7 +188,80 @@
       </footer>
       <!-- end of footer -->
     </div>
+    <script>
+      var btn = document.querySelector(".add");
+      var remove = document.querySelector(".draggable");
 
+      function dragStart(e) {
+        this.style.opacity = "0.4";
+        dragSrcEl = this;
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/html", this.innerHTML);
+      }
+
+      function dragEnter(e) {
+        this.classList.add("over");
+      }
+
+      function dragLeave(e) {
+        e.stopPropagation();
+        this.classList.remove("over");
+      }
+
+      function dragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        return false;
+      }
+
+      function dragDrop(e) {
+        if (dragSrcEl != this) {
+          dragSrcEl.innerHTML = this.innerHTML;
+          this.innerHTML = e.dataTransfer.getData("text/html");
+        }
+        return false;
+      }
+
+      function dragEnd(e) {
+        var listItens = document.querySelectorAll(".draggable");
+        [].forEach.call(listItens, function (item) {
+          item.classList.remove("over");
+        });
+        this.style.opacity = "1";
+      }
+
+      function addEventsDragAndDrop(el) {
+        el.addEventListener("dragstart", dragStart, false);
+        el.addEventListener("dragenter", dragEnter, false);
+        el.addEventListener("dragover", dragOver, false);
+        el.addEventListener("dragleave", dragLeave, false);
+        el.addEventListener("drop", dragDrop, false);
+        el.addEventListener("dragend", dragEnd, false);
+      }
+
+      var listItens = document.querySelectorAll(".draggable");
+      [].forEach.call(listItens, function (item) {
+        addEventsDragAndDrop(item);
+      });
+
+      function addNewItem() {
+        var newItem = document.querySelector(".input").value;
+        if (newItem != "") {
+          document.querySelector(".input").value = "";
+          var li = document.createElement("li");
+          var attr = document.createAttribute("draggable");
+          var ul = document.querySelector("ul");
+          li.className = "draggable";
+          attr.value = "true";
+          li.setAttributeNode(attr);
+          li.appendChild(document.createTextNode(newItem));
+          ul.appendChild(li);
+          addEventsDragAndDrop(li);
+        }
+      }
+
+      btn.addEventListener("click", addNewItem);
+    </script>
     <script src="js/app.js"></script>
   </body>
 </html>
