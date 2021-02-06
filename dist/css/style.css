@@ -265,7 +265,7 @@ form {
   display: flex;
 }
 input[type="text"] {
-  padding: 3rem;
+  padding: 2rem;
   font-size: 2rem;
   border: none;
   width: 100%;
@@ -285,7 +285,7 @@ button {
   background: var(--primary-color);
   border: none;
   color: var(--main-white);
-  margin: 2rem 0 0rem 1rem;
+  margin: 1rem 0 0rem 1rem;
   box-shadow: 0 0.4rem 0.8rem 0 rgba(66, 66, 66, 0.781);
   height: 6rem;
   width: 6rem;
