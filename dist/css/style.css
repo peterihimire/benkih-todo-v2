@@ -130,7 +130,7 @@ h4 {
     left: 0;
     width: 100%;
     z-index: 3;
-    padding: 1.6rem 2rem;
+    padding: 2rem 2rem;
     background: var(--main-white);
     color: var(--primary-color);
   }
@@ -431,6 +431,16 @@ footer {
   }
 }
 /***** end of footer section  *****/
+.error {
+  display: flex;
+  color: var(--red-color);
+  padding: 1.5rem;
+  background: rgb(255, 221, 221);
+  border-radius: 0.2rem;
+  justify-content: space-between;
+  margin: 0.7rem 1rem;
+  /* transition: var(--main-transition); */
+}
 .over {
   transform: scale(1.1, 1.1);
 }

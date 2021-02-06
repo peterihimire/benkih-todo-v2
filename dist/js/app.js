@@ -1,6 +1,21 @@
 const todoDate = document.querySelector(".todo-date");
-console.log(todoDate);
+const todoFeedback = document.querySelector(".todo-feedback");
+const todoInput = document.querySelector("#todo-input");
+const todoSubmit = document.querySelector("#todo-submit");
+const todoDisplay = document.querySelector("#todo-display");
+const todoBox = document.querySelector("#todo-box");
+const formWrapper = document.querySelector("#todo-wrapper");
 
+console.log(
+  todoDate,
+  todoInput,
+  todoSubmit,
+  todoDisplay,
+  todoBox,
+  formWrapper,
+  todoFeedback
+);
+// For Date Display
 const dateTimeFormat = (date) => {
   // const date = new Date();
   let minutes = date.getMinutes().toString();
@@ -38,3 +53,26 @@ const dateTimeFormat = (date) => {
   todoDate.firstElementChild.textContent = today;
 };
 dateTimeFormat(new Date());
+
+// For Form Submit
+const submitTodoForm = (e) => {
+  // e.preventDefault()
+  const todoValue = todoInput.value;
+
+  if (todoValue === "") {
+    todoFeedback.innerHTML = `<p>Value cannot be empty</p>`;
+    todoFeedback.classList.add("error");
+
+    setTimeout(() => {
+      todoFeedback.remove("error");
+    }, 3000);
+  } else {
+    let todo = {
+      id: todoID,
+      name: todoValue,
+    };
+    console.log(todo);
+  }
+  console.log(todoValue);
+};
+submitTodoForm();
