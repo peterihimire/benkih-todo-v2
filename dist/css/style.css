@@ -291,6 +291,7 @@ button {
   box-shadow: 0 0.4rem 0.8rem 0 rgba(66, 66, 66, 0.781);
   height: 6rem;
   width: 6rem;
+  outline: none;
 }
 
 button i {

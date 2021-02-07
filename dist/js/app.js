@@ -4,7 +4,7 @@ const todoInput = document.querySelector("#todo-input");
 const todoSubmit = document.querySelector("#todo-submit");
 const todoDisplay = document.querySelector("#todo-display");
 const todoBox = document.querySelector("#todo-box");
-const formWrapper = document.querySelector("#todo-wrapper");
+const formWrapper = document.querySelector("#form-wrapper");
 // var btn = document.querySelector(".add");
 const remove = document.querySelector(".draggable");
 
@@ -146,6 +146,7 @@ const addTodo = (todo) => {
   div.classList.toggle("item");
   div.classList.add("draggable");
   div.setAttribute("draggable", true);
+
   div.innerHTML = `
     <div class="item-check check-slave" data-id="${todo.id}">
       <input type="checkbox" class="todo-check" value="on" />
@@ -162,7 +163,7 @@ const addTodo = (todo) => {
       </div>
     </div>
   `;
-  todoBox.insertBefore(div, formWrapper);
+  todoBox.insertBefore(div, formWrapper.nextSibling);
 };
 
 todoSubmit.addEventListener("click", (e) => {
