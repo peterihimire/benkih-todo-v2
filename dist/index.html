@@ -66,7 +66,70 @@
                 <div class="card-wrapper" id="todo-box">
                   <div class="todo-feedback"></div>
 
-               
+                  <!-- <div class="item draggable" draggable="true">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">Wash clothes</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item draggable" draggable="true">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">eat breakfast</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item draggable" draggable="true">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">play soccer</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item draggable" draggable="true">
+                    <div class="item-check check-slave" data-id="${todo.id}">
+                      <input type="checkbox" class="todo-check" value="on" />
+                    </div>
+                    <div class="item-text">
+                      <p class="item-text-p" id="todo-display">take nap</p>
+                    </div>
+                    <div class="item-edit">
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-edit" id="edit"></i>
+                      </div>
+                      <div class="icon" id="icon-edit" data-id="${todo.id}">
+                        <i class="fas fa-trash" id="trash"></i>
+                      </div>
+                    </div>
+                  </div> -->
 
                   <!-- This place will be coming from JavaScript -->
                   <div class="form-wrapper" id="form-wrapper">
@@ -114,23 +177,27 @@
       // var remove = document.querySelector(".draggable");
 
       // function dragStart(e) {
+      //   console.log(e);
       //   this.style.opacity = "0.4";
       //   dragSrcEl = this;
-      //   console.log(this);
+      //   console.log(dragSrcEl);
       //   e.dataTransfer.effectAllowed = "move";
       //   e.dataTransfer.setData("text/html", this.innerHTML);
       // }
 
       // function dragEnter(e) {
+      //   console.log(e);
       //   this.classList.add("over");
       // }
 
       // function dragLeave(e) {
+      //   console.log(e);
       //   e.stopPropagation();
       //   this.classList.remove("over");
       // }
 
       // function dragOver(e) {
+      //   console.log(e)
       //   e.preventDefault();
       //   e.dataTransfer.dropEffect = "move";
       //   return false;
@@ -160,7 +227,6 @@
       //   el.addEventListener("drop", dragDrop, false);
       //   el.addEventListener("dragend", dragEnd, false);
       // }
-      // console.log(addEventListener);
 
       // var listItens = document.querySelectorAll(".draggable");
       // [].forEach.call(listItens, function (item) {
