@@ -210,23 +210,23 @@ document.addEventListener("DOMContentLoaded", () => {
       checkTodo(e.target);
     }
   });
+
   // Drag and Drop function
-
   function dragStart(e) {
-    this.style.opacity = "0.4";
-    dragSrcEl = this;
-    console.log(this);
+    todoItem.style.opacity = "0.4";
+    dragSrcEl = todoItem;
+    console.log(dragSrcEl);
     e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("text/html", this.innerHTML);
+    e.dataTransfer.setData("text/html", todoItem.innerHTML);
   }
-
+  // dragStart();
   function dragEnter(e) {
-    this.classList.add("over");
+    todoItem.classList.add("over");
   }
 
   function dragLeave(e) {
     e.stopPropagation();
-    this.classList.remove("over");
+    todoItem.classList.remove("over");
   }
 
   function dragOver(e) {
@@ -236,9 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function dragDrop(e) {
-    if (dragSrcEl != this) {
-      dragSrcEl.innerHTML = this.innerHTML;
-      this.innerHTML = e.dataTransfer.getData("text/html");
+    if (dragSrcEl != todoItem) {
+      dragSrcEl.innerHTML = todoItem.innerHTML;
+      todoItem.innerHTML = e.dataTransfer.getData("text/html");
     }
     return false;
   }
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [].forEach.call(listItens, function (item) {
       item.classList.remove("over");
     });
-    this.style.opacity = "1";
+    todoItem.style.opacity = "1";
   }
 
   function addEventsDragAndDrop(el) {
