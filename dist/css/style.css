@@ -441,6 +441,9 @@ footer {
   margin: 0.7rem 1rem;
   /* transition: var(--main-transition); */
 }
+.strike-through {
+  text-decoration: line-through;
+}
 .over {
   transform: scale(1.1, 1.1);
 }

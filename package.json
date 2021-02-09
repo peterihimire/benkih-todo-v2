@@ -4,9 +4,7 @@
   "description": "A todo application to organize and prioritize task , via draggable",
   "main": "app.js",
   "scripts": {
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-  
   },
   "keywords": [
     "todo",

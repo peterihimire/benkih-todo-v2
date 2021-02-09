@@ -7,7 +7,7 @@ const todoBox = document.querySelector("#todo-box");
 const formWrapper = document.querySelector("#form-wrapper");
 const remove = document.querySelector(".draggable");
 const todoItem = document.querySelector(".item");
-console.log(todoItem);
+
 let todoItemList = [];
 let todoID = 0;
 
@@ -144,7 +144,7 @@ const submitTodoForm = () => {
     todoID++;
     todoItemList.push(todo);
     addTodo(todo);
-    // console.log(todo);
+    saveTodo();
   }
 };
 
@@ -200,20 +200,20 @@ const checkTodo = (todoItem) => {
   todoPtag.classList.toggle("strike-through");
 };
 
-const setReset = (e) => {
-  const todoList = todoItemList.map((todo) => {
-    return todo.id;
-  });
+// const setReset = (e) => {
+//   const todoList = todoItemList.map((todo) => {
+//     return todo.id;
+//   });
 
-  todoList.forEach((id) => deleteTodoById(id));
-  let todoBoxChildren = todoBox.children;
-  let i;
-  for (i = 0; i < todoBoxChildren.length; i++) {
-    while (todoBoxChildren[i].classList.contains("item")) {
-      todoBox.removeChild(todoBoxChildren[i]);
-    }
-  }
-};
+//   todoList.forEach((id) => deleteTodoById(id));
+//   let todoBoxChildren = todoBox.children;
+//   let i;
+//   for (i = 0; i < todoBoxChildren.length; i++) {
+//     while (todoBoxChildren[i].classList.contains("item")) {
+//       todoBox.removeChild(todoBoxChildren[i]);
+//     }
+//   }
+// };
 // refreshBtn.addEventListener("click", setReset);
 
 const deleteTodoById = (id) => {
@@ -224,7 +224,6 @@ const deleteTodoById = (id) => {
 todoSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   submitTodoForm();
-  console.log(todoItemList);
 });
 
 const setupApp = () => {
@@ -238,24 +237,25 @@ const populateTodo = (todoItemList) => {
 };
 
 const saveTodo = () => {
-  localStorage.setItem("todos", JSON.stringify(todoItemList));
+  localStorage.setItem("todoz", JSON.stringify(todoItemList));
 };
 
 const getOneTodo = (id) => {
-  let todos = JSON.parse(localStorage.getItem("todos"));
-  return todos.find(function (todo) {
+  let todos = JSON.parse(localStorage.getItem("todoz"));
+  return todos.find((todo) => {
     todo.id === id;
   });
 };
 
 const getTodos = () => {
-  return localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
+  return localStorage.getItem("todoz")
+    ? JSON.parse(localStorage.getItem("todoz"))
     : [];
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   setupApp();
+
   todoBox.addEventListener("click", (e) => {
     if (e.target.classList.contains("fa-edit")) {
       editTodo(e.target);
