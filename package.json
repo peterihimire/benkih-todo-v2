@@ -4,12 +4,16 @@
   "description": "A todo application to organize and prioritize task , via draggable",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "todo",
     "task"
   ],
   "author": "Peter Ihimire",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://peterihimire.github.io/benkih-todo-v2",
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  }
 }
