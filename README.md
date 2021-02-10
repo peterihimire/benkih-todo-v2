@@ -36,4 +36,4 @@ This app is inspired by Angela Yu todo list design from one of her Udemy course.
 
 ## Demo
 
-You can view the live demo of this application by visiting this [link](https://benkih-todolist-v2.netlify.app)
+You can view the live demo of this application by visiting this [link](https://peterihimire.github.io/benkih-todolist-v2)
