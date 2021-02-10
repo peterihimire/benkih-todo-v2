@@ -3,11 +3,11 @@ const todoFeedback = document.querySelector(".todo-feedback");
 const todoInput = document.querySelector("#todo-input");
 const todoSubmit = document.querySelector("#todo-submit");
 const todoSubmitClass = document.querySelector(".todo-submit");
-
 const todoDisplay = document.querySelector("#todo-display");
 const todoBox = document.querySelector("#todo-box");
 const formWrapper = document.querySelector("#form-wrapper");
 const remove = document.querySelector(".draggable");
+const refreshBtn = document.querySelector("#refresh-btn");
 
 let todoItemList = [];
 let todoID = 0;
@@ -129,21 +129,21 @@ const checkTodo = (todoItem) => {
   todoPtag.classList.toggle("strike-through");
 };
 
-// const setReset = (e) => {
-//   const todoList = todoItemList.map((todo) => {
-//     return todo.id;
-//   });
+const setReset = (e) => {
+  const todoList = todoItemList.map((todo) => {
+    return todo.id;
+  });
 
-//   todoList.forEach((id) => deleteTodoById(id));
-//   let todoBoxChildren = todoBox.children;
-//   let i;
-//   for (i = 0; i < todoBoxChildren.length; i++) {
-//     while (todoBoxChildren[i].classList.contains("item")) {
-//       todoBox.removeChild(todoBoxChildren[i]);
-//     }
-//   }
-// };
-// refreshBtn.addEventListener("click", setReset);
+  todoList.forEach((id) => deleteTodoById(id));
+  let todoBoxChildren = todoBox.children;
+  let i;
+  for (i = 0; i < todoBoxChildren.length; i++) {
+    while (todoBoxChildren[i].classList.contains("item")) {
+      todoBox.removeChild(todoBoxChildren[i]);
+    }
+  }
+};
+refreshBtn.addEventListener("click", setReset);
 
 const deleteTodoById = (id) => {
   todoItemList = todoItemList.filter((todo) => todo.id !== id);
