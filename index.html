@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="60; url=index.html" /> -->
     <title>Todo App Draggable</title>
     <link rel="stylesheet" href="css/fontawesome.css" />
     <link rel="stylesheet" href="css/all.css" />
@@ -22,9 +23,7 @@
             <div class="navbar-container">
               <div class="navbar-header">
                 <h4>
-                  <a href="#index" class="navbar-logo">
-                    TODO APP
-                  </a>
+                  <a href="#index" class="navbar-logo"> TODO APP </a>
                 </h4>
               </div>
 
@@ -32,8 +31,8 @@
                 <li class="navbar-item">
                   <a href="index.html">home</a>
                 </li>
-                <li class="navbar-item">
-                  <a href="task.html">reset</a>
+                <li class="navbar-item" id="refresh-btn">
+                  <a href="#">reset</a>
                 </li>
               </ul>
 
@@ -88,39 +87,6 @@
                     </form>
                   </div>
                   <!-- This place will be coming from JavaScript -->
-
-                  <!-- <div class="item draggable" draggable="true">
-                    <div class="item-check check-slave" data-id="${todo.id}">
-                      <input type="checkbox" class="todo-check" value="on" />
-                    </div>
-                    <div class="item-text">
-                      <p class="item-text-p" id="todo-display">Wash clothes</p>
-                    </div>
-                    <div class="item-edit">
-                      <div class="icon" id="icon-edit" data-id="${todo.id}">
-                        <i class="fas fa-edit" id="edit"></i>
-                      </div>
-                      <div class="icon" id="icon-edit" data-id="${todo.id}">
-                        <i class="fas fa-trash" id="trash"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item draggable" draggable="true">
-                    <div class="item-check check-slave" data-id="${todo.id}">
-                      <input type="checkbox" class="todo-check" value="on" />
-                    </div>
-                    <div class="item-text">
-                      <p class="item-text-p" id="todo-display">eat breakfast</p>
-                    </div>
-                    <div class="item-edit">
-                      <div class="icon" id="icon-edit" data-id="${todo.id}">
-                        <i class="fas fa-edit" id="edit"></i>
-                      </div>
-                      <div class="icon" id="icon-edit" data-id="${todo.id}">
-                        <i class="fas fa-trash" id="trash"></i>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
               </div>
             </div>

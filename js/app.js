@@ -2,86 +2,15 @@ const todoDate = document.querySelector(".todo-date");
 const todoFeedback = document.querySelector(".todo-feedback");
 const todoInput = document.querySelector("#todo-input");
 const todoSubmit = document.querySelector("#todo-submit");
+const todoItem = document.querySelector(".item");
 const todoDisplay = document.querySelector("#todo-display");
 const todoBox = document.querySelector("#todo-box");
 const formWrapper = document.querySelector("#form-wrapper");
 const remove = document.querySelector(".draggable");
-const todoItem = document.querySelector(".item");
-console.log(todoItem);
+const refreshBtn = document.querySelector("#refresh-btn");
+
 let todoItemList = [];
 let todoID = 0;
-
-// For Drag and Drop
-function dragStart(e) {
-  this.style.opacity = "0.4";
-  dragSrcEl = this;
-  console.log(this);
-  e.dataTransfer.effectAllowed = "move";
-  e.dataTransfer.setData("text/html", this.innerHTML);
-}
-
-function dragEnter(e) {
-  this.classList.add("over");
-}
-
-function dragLeave(e) {
-  e.stopPropagation();
-  this.classList.remove("over");
-}
-
-function dragOver(e) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = "move";
-  return false;
-}
-
-function dragDrop(e) {
-  if (dragSrcEl != this) {
-    dragSrcEl.innerHTML = this.innerHTML;
-    this.innerHTML = e.dataTransfer.getData("text/html");
-  }
-  return false;
-}
-
-function dragEnd(e) {
-  var listItens = document.querySelectorAll(".draggable");
-  [].forEach.call(listItens, function (item) {
-    item.classList.remove("over");
-  });
-  this.style.opacity = "1";
-}
-
-function addEventsDragAndDrop(el) {
-  el.addEventListener("dragstart", dragStart, false);
-  el.addEventListener("dragenter", dragEnter, false);
-  el.addEventListener("dragover", dragOver, false);
-  el.addEventListener("dragleave", dragLeave, false);
-  el.addEventListener("drop", dragDrop, false);
-  el.addEventListener("dragend", dragEnd, false);
-}
-
-var listItens = document.querySelectorAll(".draggable");
-[].forEach.call(listItens, function (item) {
-  addEventsDragAndDrop(item);
-});
-
-// function addNewItem() {
-//   var newItem = document.querySelector(".input").value;
-//   if (newItem != "") {
-//     document.querySelector(".input").value = "";
-//     var li = document.createElement("li");
-//     var attr = document.createAttribute("draggable");
-//     var ul = document.querySelector("ul");
-//     li.className = "draggable";
-//     attr.value = "true";
-//     li.setAttributeNode(attr);
-//     li.appendChild(document.createTextNode(newItem));
-//     ul.appendChild(li);
-//     addEventsDragAndDrop(li);
-//   }
-// }
-
-// btn.addEventListener("click", addNewItem);
 
 // console.log(remove);
 
@@ -144,7 +73,7 @@ const submitTodoForm = () => {
     todoID++;
     todoItemList.push(todo);
     addTodo(todo);
-    // console.log(todo);
+    saveTodo();
   }
 };
 
@@ -170,8 +99,26 @@ const addTodo = (todo) => {
       </div>
     </div>
   `;
+
   todoBox.insertBefore(div, formWrapper.nextSibling);
+  reloadPageOnce()
 };
+
+// FUNCTION TO RELOAD A PAGE ONCE
+function reloadPageOnce() {
+  let currentDocumentTimestamp = new Date(
+    performance.timing.domLoading
+  ).getTime();
+  let now = Date.now();
+  let tenSec = 10 * 1000;
+  let plusTenSec = currentDocumentTimestamp + tenSec;
+
+  if (now > plusTenSec) {
+    location.reload();
+  } else {
+  }
+}
+
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
   let singleTodo = todoitem.parentElement.parentElement.parentElement;
@@ -214,7 +161,7 @@ const setReset = (e) => {
     }
   }
 };
-// refreshBtn.addEventListener("click", setReset);
+refreshBtn.addEventListener("click", setReset);
 
 const deleteTodoById = (id) => {
   todoItemList = todoItemList.filter((todo) => todo.id !== id);
@@ -224,7 +171,6 @@ const deleteTodoById = (id) => {
 todoSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   submitTodoForm();
-  console.log(todoItemList);
 });
 
 const setupApp = () => {
@@ -238,24 +184,25 @@ const populateTodo = (todoItemList) => {
 };
 
 const saveTodo = () => {
-  localStorage.setItem("todos", JSON.stringify(todoItemList));
+  localStorage.setItem("todoz", JSON.stringify(todoItemList));
 };
 
 const getOneTodo = (id) => {
-  let todos = JSON.parse(localStorage.getItem("todos"));
-  return todos.find(function (todo) {
+  let todos = JSON.parse(localStorage.getItem("todoz"));
+  return todos.find((todo) => {
     todo.id === id;
   });
 };
 
 const getTodos = () => {
-  return localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
+  return localStorage.getItem("todoz")
+    ? JSON.parse(localStorage.getItem("todoz"))
     : [];
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   setupApp();
+
   todoBox.addEventListener("click", (e) => {
     if (e.target.classList.contains("fa-edit")) {
       editTodo(e.target);
@@ -268,5 +215,59 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.classList.contains("todo-check")) {
       checkTodo(e.target);
     }
+  });
+
+  // For Drag and Drop, Works only when node-element has been mounted to the DOM
+  function dragStart(e) {
+    this.style.opacity = "0.4";
+    dragSrcEl = this;
+    console.log(this);
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", this.innerHTML);
+  }
+
+  function dragEnter(e) {
+    this.classList.add("over");
+  }
+
+  function dragLeave(e) {
+    e.stopPropagation();
+    this.classList.remove("over");
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    return false;
+  }
+
+  function dragDrop(e) {
+    if (dragSrcEl != this) {
+      dragSrcEl.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getData("text/html");
+    }
+    return false;
+  }
+
+  function dragEnd(e) {
+    let listItens = document.querySelectorAll(".draggable");
+    [].forEach.call(listItens, function (item) {
+      item.classList.remove("over");
+    });
+    this.style.opacity = "1";
+  }
+
+  function addEventsDragAndDrop(el) {
+    el.addEventListener("dragstart", dragStart, false);
+    el.addEventListener("dragenter", dragEnter, false);
+    el.addEventListener("dragover", dragOver, false);
+    el.addEventListener("dragleave", dragLeave, false);
+    el.addEventListener("drop", dragDrop, false);
+    el.addEventListener("dragend", dragEnd, false);
+  }
+
+  let listItens = document.querySelectorAll(".draggable");
+  [].forEach.call(listItens, function (item) {
+    addEventsDragAndDrop(item);
   });
 });
