@@ -2,7 +2,7 @@ const todoDate = document.querySelector(".todo-date");
 const todoFeedback = document.querySelector(".todo-feedback");
 const todoInput = document.querySelector("#todo-input");
 const todoSubmit = document.querySelector("#todo-submit");
-const todoSubmitClass = document.querySelector(".todo-submit");
+const todoItem = document.querySelector(".item");
 const todoDisplay = document.querySelector("#todo-display");
 const todoBox = document.querySelector("#todo-box");
 const formWrapper = document.querySelector("#form-wrapper");
@@ -79,6 +79,7 @@ const submitTodoForm = () => {
 
 const addTodo = (todo) => {
   const div = document.createElement("div");
+  console.log(formWrapper.nextSibling);
   div.classList.toggle("item");
   div.classList.add("draggable");
   div.setAttribute("draggable", true);
@@ -99,8 +100,26 @@ const addTodo = (todo) => {
       </div>
     </div>
   `;
+
+  const pageRefreshTimeOut = () => {
+    let prt = setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+    return prt;
+  };
+
   todoBox.insertBefore(div, formWrapper.nextSibling);
+
+  formWrapper.nextSibling.addEventListener("mouseover", () => {
+    console.log("Was hovered over");
+    pageRefreshTimeOut();
+  });
+  formWrapper.nextSibling.removeEventListener("mouseover", () => {
+    console.log("hovered over removed");
+    pageRefreshTimeOut();
+  });
 };
+
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
   let singleTodo = todoitem.parentElement.parentElement.parentElement;
@@ -150,31 +169,18 @@ const deleteTodoById = (id) => {
   saveTodo();
 };
 
-let prt;
-const pageRefreshTimeOut = () => {
-  prt = setTimeout(() => {
-    window.location.reload();
-  }, 3000);
-};
+console.log(formWrapper.previousSibling);
+console.log(formWrapper.nextSibling);
 
-// const clearPageRefreshTimeOut = () => {
-//   setTimeout(() => {
-//     clearTimeout(prt);
-//   }, 4000);
-// };
-// todoSubmit.addEventListener("click", (e) => {
+todoSubmit.addEventListener("click", (e) => {
+  e.preventDefault();
+  submitTodoForm();
+});
+
+// todoSubmitClass.removeEventListener("click", (e) => {
 //   e.preventDefault();
-//   submitTodoForm();
+//   pageRefreshTimeOut();
 // });
-todoSubmitClass.addEventListener(
-  "click",
-  (e) => {
-    e.preventDefault();
-    submitTodoForm();
-    pageRefreshTimeOut();
-  },
-  { once: true }
-);
 
 const setupApp = () => {
   todoItemList = getTodos();
@@ -273,4 +279,5 @@ document.addEventListener("DOMContentLoaded", () => {
   [].forEach.call(listItens, function (item) {
     addEventsDragAndDrop(item);
   });
+  console.log(todoItem, remove);
 });
