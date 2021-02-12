@@ -79,7 +79,6 @@ const submitTodoForm = () => {
 
 const addTodo = (todo) => {
   const div = document.createElement("div");
-  console.log(formWrapper.nextSibling);
   div.classList.toggle("item");
   div.classList.add("draggable");
   div.setAttribute("draggable", true);
@@ -101,24 +100,24 @@ const addTodo = (todo) => {
     </div>
   `;
 
-  const pageRefreshTimeOut = () => {
-    let prt = setTimeout(() => {
-      window.location.reload();
-    }, 3000);
-    return prt;
-  };
-
   todoBox.insertBefore(div, formWrapper.nextSibling);
-
-  formWrapper.nextSibling.addEventListener("mouseover", () => {
-    console.log("Was hovered over");
-    pageRefreshTimeOut();
-  });
-  formWrapper.nextSibling.removeEventListener("mouseover", () => {
-    console.log("hovered over removed");
-    pageRefreshTimeOut();
-  });
+  reloadPageOnce()
 };
+
+// FUNCTION TO RELOAD A PAGE ONCE
+function reloadPageOnce() {
+  let currentDocumentTimestamp = new Date(
+    performance.timing.domLoading
+  ).getTime();
+  let now = Date.now();
+  let tenSec = 10 * 1000;
+  let plusTenSec = currentDocumentTimestamp + tenSec;
+
+  if (now > plusTenSec) {
+    location.reload();
+  } else {
+  }
+}
 
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
@@ -169,18 +168,10 @@ const deleteTodoById = (id) => {
   saveTodo();
 };
 
-console.log(formWrapper.previousSibling);
-console.log(formWrapper.nextSibling);
-
 todoSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   submitTodoForm();
 });
-
-// todoSubmitClass.removeEventListener("click", (e) => {
-//   e.preventDefault();
-//   pageRefreshTimeOut();
-// });
 
 const setupApp = () => {
   todoItemList = getTodos();
@@ -279,5 +270,4 @@ document.addEventListener("DOMContentLoaded", () => {
   [].forEach.call(listItens, function (item) {
     addEventsDragAndDrop(item);
   });
-  console.log(todoItem, remove);
 });
