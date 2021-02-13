@@ -109,9 +109,9 @@ function reloadPageOnce() {
     performance.timing.domLoading
   ).getTime();
   let now = Date.now();
-  let tenSec = 10 * 1000;
-  let plusTenSec = currentDocumentTimestamp + tenSec;
-  if (now > plusTenSec) {
+  let twoSec = 2 * 1000;
+  let plusTwoSec = currentDocumentTimestamp + twoSec;
+  if (now > plusTwoSec) {
     window.location.reload();
   }
 }
