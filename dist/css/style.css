@@ -309,7 +309,6 @@ button i {
   border-radius: 0.5rem;
   margin: 1rem;
   background-color: var(--main-white);
-  position: relative;
   overflow: hidden;
 }
 .item:hover .item-edit {
@@ -319,8 +318,6 @@ button i {
 .item-edit {
   display: flex;
   justify-content: flex-end;
-  position: absolute;
-  right: -130px;
   top: 16px;
   transition: var(--main-transition);
 }
@@ -361,6 +358,32 @@ button i {
   position: absolute;
   left: 12px;
   top: 9px;
+}
+@media screen and (min-width: 1170px) {
+  .item {
+    display: grid;
+    grid-template-columns: 0.2fr 8fr 1fr;
+    justify-content: space-between;
+    padding: 1.5rem;
+    box-shadow: 0 0.4rem 0.8rem 0 rgba(126, 13, 154, 0.781);
+    border-radius: 0.5rem;
+    margin: 1rem;
+    background-color: var(--main-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .item:hover .item-edit {
+    right: 20px;
+  }
+
+  .item-edit {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: -130px;
+    top: 16px;
+    transition: var(--main-transition);
+  }
 }
 /***** end of todo item  *****/
 
