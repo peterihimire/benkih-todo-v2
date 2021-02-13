@@ -101,7 +101,6 @@ const addTodo = (todo) => {
   `;
 
   todoBox.insertBefore(div, formWrapper.nextSibling);
-  reloadPageOnce()
 };
 
 // FUNCTION TO RELOAD A PAGE ONCE
@@ -112,13 +111,12 @@ function reloadPageOnce() {
   let now = Date.now();
   let tenSec = 10 * 1000;
   let plusTenSec = currentDocumentTimestamp + tenSec;
-
   if (now > plusTenSec) {
-    location.reload();
-  } else {
+    window.location.reload();
   }
 }
 
+// FUNCTION TO EDIT TODO
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
   let singleTodo = todoitem.parentElement.parentElement.parentElement;
@@ -129,6 +127,7 @@ const editTodo = (todoitem) => {
   todoItemList = tempTodo;
 };
 
+// FUNCTION TO DELETE TODO
 const deleteTodo = (todoItem) => {
   let id = parseInt(todoItem.parentElement.dataset.id);
   let singleTodo = todoItem.parentElement.parentElement.parentElement;
@@ -139,7 +138,8 @@ const deleteTodo = (todoItem) => {
   saveTodo();
 };
 
-const checkTodo = (todoItem) => {
+// FUNCTION TO STRIKE TODO
+const strikeTodo = (todoItem) => {
   let id = parseInt(todoItem.parentElement.dataset.id);
   let singleTodo = todoItem.parentElement.parentElement;
   let todoText = singleTodo.children[1].firstElementChild.textContent;
@@ -171,7 +171,13 @@ const deleteTodoById = (id) => {
 todoSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   submitTodoForm();
+  reloadPageOnce();
 });
+
+// todoSubmitClass.removeEventListener("click", (e) => {
+//   e.preventDefault();
+//   pageRefreshTimeOut();
+// });
 
 const setupApp = () => {
   todoItemList = getTodos();
@@ -213,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   todoBox.addEventListener("change", (e) => {
     if (e.target.classList.contains("todo-check")) {
-      checkTodo(e.target);
+      strikeTodo(e.target);
     }
   });
 
