@@ -1,3 +1,6 @@
+const navbarBtn = document.querySelector(".navbar-btn");
+const navbarLinks = document.querySelector(".navbar-links");
+const navbarOverlay = document.querySelector(".navbar-overlay");
 const todoDate = document.querySelector(".todo-date");
 const todoFeedback = document.querySelector(".todo-feedback");
 const todoInput = document.querySelector("#todo-input");
@@ -13,6 +16,31 @@ let todoItemList = [];
 let todoID = 0;
 
 // console.log(remove);
+// navbar event listener
+navbarBtn.addEventListener("click", () => {
+  let value = navbarLinks.classList.contains("show-nav");
+
+  if (value) {
+    navbarLinks.classList.remove("show-nav");
+    navbarBtn.classList.remove("change");
+    navbarOverlay.classList.remove("transparent-background");
+  } else {
+    navbarLinks.classList.add("show-nav");
+    navbarBtn.classList.add("change");
+    navbarOverlay.classList.add("transparent-background");
+  }
+});
+
+navbarOverlay.addEventListener("click", (e) => {
+  console.log(e.target);
+  console.log("navbar overlay has been clicked");
+  let value = navbarLinks.classList.contains("show-nav");
+  if (value) {
+    navbarLinks.classList.remove("show-nav");
+    navbarBtn.classList.remove("change");
+    navbarOverlay.classList.remove("transparent-background");
+  }
+});
 
 // For Date Display
 const dateTimeFormat = (date) => {
