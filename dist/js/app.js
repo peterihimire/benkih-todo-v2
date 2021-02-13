@@ -147,22 +147,35 @@ function reloadPageOnce() {
 // FUNCTION TO EDIT TODO
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
+  let name =
+    todoitem.parentElement.parentElement.parentElement.children[1].textContent;
+  console.log(name);
+
   let singleTodo = todoitem.parentElement.parentElement.parentElement;
   todoBox.removeChild(singleTodo);
+
   let individualTodo = todoItemList.filter((todo) => todo.id === id);
+  // let individualTod = todoItemList.filter((todo) => todo.name === name);
+
   todoInput.value = individualTodo[0].name;
+  // todoInput.value = individualTod[0].name;
+
   let tempTodo = todoItemList.filter((todo) => todo.id !== id);
+  // let tempTod = todoItemList.filter((todo) => todo.name !== name);
+
   todoItemList = tempTodo;
+  // todoItemList = tempTod;
 };
-const editTodo2 = (todoitem) => {
-  let id = parseInt(todoitem.dataset.id);
-  let singleTodo = todoitem.parentElement.parentElement;
-  todoBox.removeChild(singleTodo);
-  let individualTodo = todoItemList.filter((todo) => todo.id === id);
-  todoInput.value = individualTodo[0].name;
-  let tempTodo = todoItemList.filter((todo) => todo.id !== id);
-  todoItemList = tempTodo;
-};
+
+// const editTodo2 = (todoitem) => {
+//   let id = parseInt(todoitem.dataset.id);
+//   let singleTodo = todoitem.parentElement.parentElement;
+//   todoBox.removeChild(singleTodo);
+//   let individualTodo = todoItemList.filter((todo) => todo.id === id);
+//   todoInput.value = individualTodo[0].name;
+//   let tempTodo = todoItemList.filter((todo) => todo.id !== id);
+//   todoItemList = tempTodo;
+// };
 
 // FUNCTION TO DELETE TODO
 const deleteTodo = (todoItem) => {
@@ -279,7 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // For Drag and Drop, Works only when node-element has been mounted to the DOM
+  // FUNCTIONS FOR DRAG AND DROP
+  // WORKS ONLY WHEN ELEMENT HAS BEEN MOUNTED TO THE DOM
   function dragStart(e) {
     this.style.opacity = "0.4";
     dragSrcEl = this;
