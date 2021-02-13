@@ -91,17 +91,16 @@ const addTodo = (todo) => {
       <p class="item-text-p" id="todo-display">${todo.name}</p>
     </div>
     <div class="item-edit">
-      <div class="icon" id="icon-edit" data-id="${todo.id}">
+      <div class="icon edit-div" id="icon-edit" data-id="${todo.id}">
         <i class="fas fa-edit" id="edit"></i>
       </div>
-      <div class="icon" id="icon-edit" data-id="${todo.id}">
+      <div class="icon trash-div" id="icon-edit" data-id="${todo.id}">
         <i class="fas fa-trash" id="trash"></i>
       </div>
     </div>
   `;
 
   todoBox.insertBefore(div, formWrapper.nextSibling);
-  reloadPageOnce()
 };
 
 // FUNCTION TO RELOAD A PAGE ONCE
@@ -112,13 +111,12 @@ function reloadPageOnce() {
   let now = Date.now();
   let tenSec = 10 * 1000;
   let plusTenSec = currentDocumentTimestamp + tenSec;
-
   if (now > plusTenSec) {
-    location.reload();
-  } else {
+    window.location.reload();
   }
 }
 
+// FUNCTION TO EDIT TODO
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
   let singleTodo = todoitem.parentElement.parentElement.parentElement;
@@ -128,7 +126,17 @@ const editTodo = (todoitem) => {
   let tempTodo = todoItemList.filter((todo) => todo.id !== id);
   todoItemList = tempTodo;
 };
+const editTodo2 = (todoitem) => {
+  let id = parseInt(todoitem.dataset.id);
+  let singleTodo = todoitem.parentElement.parentElement;
+  todoBox.removeChild(singleTodo);
+  let individualTodo = todoItemList.filter((todo) => todo.id === id);
+  todoInput.value = individualTodo[0].name;
+  let tempTodo = todoItemList.filter((todo) => todo.id !== id);
+  todoItemList = tempTodo;
+};
 
+// FUNCTION TO DELETE TODO
 const deleteTodo = (todoItem) => {
   let id = parseInt(todoItem.parentElement.dataset.id);
   let singleTodo = todoItem.parentElement.parentElement.parentElement;
@@ -139,7 +147,18 @@ const deleteTodo = (todoItem) => {
   saveTodo();
 };
 
-const checkTodo = (todoItem) => {
+const deleteTodo2 = (todoItem) => {
+  let id = parseInt(todoItem.dataset.id);
+  let singleTodo = todoItem.parentElement.parentElement;
+  todoBox.removeChild(singleTodo);
+  let individualTodo = todoItemList.filter((todo) => todo.id === id);
+  let tempTodo = todoItemList.filter((todo) => todo.id !== id);
+  todoItemList = tempTodo;
+  saveTodo();
+};
+
+// FUNCTION TO STRIKE TODO
+const strikeTodo = (todoItem) => {
   let id = parseInt(todoItem.parentElement.dataset.id);
   let singleTodo = todoItem.parentElement.parentElement;
   let todoText = singleTodo.children[1].firstElementChild.textContent;
@@ -171,7 +190,13 @@ const deleteTodoById = (id) => {
 todoSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   submitTodoForm();
+  reloadPageOnce();
 });
+
+// todoSubmitClass.removeEventListener("click", (e) => {
+//   e.preventDefault();
+//   pageRefreshTimeOut();
+// });
 
 const setupApp = () => {
   todoItemList = getTodos();
@@ -211,9 +236,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // FOR THE ICON CONTAINER
+  todoBox.addEventListener("click", (e) => {
+    if (e.target.classList.contains("edit-div")) {
+      editTodo2(e.target);
+    } else if (e.target.classList.contains("trash-div")) {
+      deleteTodo2(e.target);
+    }
+  });
+
   todoBox.addEventListener("change", (e) => {
     if (e.target.classList.contains("todo-check")) {
-      checkTodo(e.target);
+      strikeTodo(e.target);
     }
   });
 

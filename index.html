@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <meta http-equiv="refresh" content="60; url=index.html" /> -->
+    <!-- <meta http-equiv="Pragma" content="no-cache" /> -->
+    <!-- <meta http-equiv="Expires" content="-1" /> -->
+
     <title>Todo App Draggable</title>
     <link rel="stylesheet" href="css/fontawesome.css" />
     <link rel="stylesheet" href="css/all.css" />
@@ -105,6 +108,64 @@
       </footer>
       <!-- end of footer -->
     </div>
+    <script>
+
+      // FUNCTION TO RELOAD A PAGE ONCE
+      // function reloadPageOnce() {
+      //   let currentDocumentTimestamp = new Date(
+      //     performance.timing.domLoading
+      //   ).getTime();
+      //   let now = Date.now();
+      //   let tenSec = 10 * 1000;
+      //   let plusTenSec = currentDocumentTimestamp + tenSec;
+
+      //   if (now > plusTenSec) {
+      //     console.log(this);
+      //     location.reload();
+      //   }
+      // }
+
+      // function reloadPageOnce() {
+      //   if (window.location.href.substr(-2) !== "?r") {
+      //     window.location = window.location.href + "?r";
+      //   }
+      // }
+      // setTimeout("reloadPageOnce()", 3000)();
+      // function LoadOnce() {
+      //   window.location.reload();
+      // }
+
+      // window.onload = function () {
+      //   if (!window.location.hash) {
+      //     window.location = window.location + "#loaded";
+      //     window.location.reload();
+      //   }
+      // };
+
+      // (function () {
+      //   if (window.localStorage) {
+      //     if (!localStorage.getItem("todoz")) {
+      //       localStorage["todoz"] = true;
+      //       window.location.reload();
+      //     } else {
+      //       localStorage.removeItem("todoz");
+      //     }
+      //   }
+      // })();
+
+      // formWrapper.nextSibling.addEventListener("mouseover", pageRefreshTimeOut);
+
+      // function pageRefreshTimeOut() {
+      //   setTimeout(() => {
+      //     window.location.reload();
+      //   }, 3000);
+      //   formWrapper.nextSibling.removeEventListener(
+      //     "mouseover",
+      //     pageRefreshTimeOut
+      //   );
+      // }
+
+    </script>
     <script src="js/app.js"></script>
   </body>
 </html>
