@@ -15,8 +15,7 @@ const refreshBtn = document.querySelector("#refresh-btn");
 let todoItemList = [];
 let todoID = 0;
 
-// console.log(remove);
-// navbar event listener
+// FUNCTION FOR NAVBAR MENU
 navbarBtn.addEventListener("click", () => {
   let value = navbarLinks.classList.contains("show-nav");
 
@@ -42,7 +41,7 @@ navbarOverlay.addEventListener("click", (e) => {
   }
 });
 
-// For Date Display
+// FUNCTION FOR DATE DISPLAY
 const dateTimeFormat = (date) => {
   // const date = new Date();
   let minutes = date.getMinutes().toString();
@@ -80,7 +79,7 @@ const dateTimeFormat = (date) => {
 };
 dateTimeFormat(new Date());
 
-// For Form Submit
+// FUNCTION FOR FORM-SUBMIT
 const submitTodoForm = () => {
   const todoValue = todoInput.value;
 
@@ -119,9 +118,6 @@ const addTodo = (todo) => {
       <p class="item-text-p" id="todo-display">${todo.name}</p>
     </div>
     <div class="item-edit">
-      <div class="icon edit-div" id="icon-edit" data-id="${todo.id}">
-        <i class="fas fa-edit" id="edit"></i>
-      </div>
       <div class="icon trash-div" id="icon-edit" data-id="${todo.id}">
         <i class="fas fa-trash" id="trash"></i>
       </div>
@@ -147,13 +143,20 @@ function reloadPageOnce() {
 // FUNCTION TO EDIT TODO
 const editTodo = (todoitem) => {
   let id = parseInt(todoitem.parentElement.dataset.id);
+  // let name =
+  //   todoitem.parentElement.parentElement.parentElement.children[1].textContent;
+
   let singleTodo = todoitem.parentElement.parentElement.parentElement;
   todoBox.removeChild(singleTodo);
+
   let individualTodo = todoItemList.filter((todo) => todo.id === id);
+  // let individualTod = todoItemList.filter((todo) => todo.name.trim() === name.trim());
+
   todoInput.value = individualTodo[0].name;
   let tempTodo = todoItemList.filter((todo) => todo.id !== id);
   todoItemList = tempTodo;
 };
+
 const editTodo2 = (todoitem) => {
   let id = parseInt(todoitem.dataset.id);
   let singleTodo = todoitem.parentElement.parentElement;
@@ -224,7 +227,7 @@ todoSubmit.addEventListener("click", (e) => {
 // todoSubmitClass.removeEventListener("click", (e) => {
 //   e.preventDefault();
 //   pageRefreshTimeOut();
-// });
+// }, {once: true});
 
 const setupApp = () => {
   todoItemList = getTodos();
@@ -256,6 +259,7 @@ const getTodos = () => {
 document.addEventListener("DOMContentLoaded", () => {
   setupApp();
 
+  // EVENT-LISTENER FOR THE ICON ITSELF
   todoBox.addEventListener("click", (e) => {
     if (e.target.classList.contains("fa-edit")) {
       editTodo(e.target);
@@ -264,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // FOR THE ICON CONTAINER
+  // EVENT-LISTENER FOR THE ICON CONTAINER
   todoBox.addEventListener("click", (e) => {
     if (e.target.classList.contains("edit-div")) {
       editTodo2(e.target);
@@ -279,7 +283,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // For Drag and Drop, Works only when node-element has been mounted to the DOM
+  // FUNCTIONS FOR DRAG AND DROP
+  // WORKS ONLY WHEN ELEMENT HAS BEEN MOUNTED TO THE DOM
   function dragStart(e) {
     this.style.opacity = "0.4";
     dragSrcEl = this;
