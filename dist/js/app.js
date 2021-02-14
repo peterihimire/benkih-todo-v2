@@ -118,9 +118,6 @@ const addTodo = (todo) => {
       <p class="item-text-p" id="todo-display">${todo.name}</p>
     </div>
     <div class="item-edit">
-      <div class="icon edit-div" id="icon-edit" data-id="${todo.id}">
-        <i class="fas fa-edit" id="edit"></i>
-      </div>
       <div class="icon trash-div" id="icon-edit" data-id="${todo.id}">
         <i class="fas fa-trash" id="trash"></i>
       </div>
