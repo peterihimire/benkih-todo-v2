@@ -25,9 +25,11 @@ Project is created with:
 To run this project, install it locally using npm:
 
 ```
-$ cd ../lorem
+$ git clone github.com/peterihimire/benkih-todo-v2.git
+$ cd benkih-todo-v2
 $ npm install
 $ npm start
+Finally visit (https://localhost:3000) on your favourite browser
 ```
 
 ## Sources
@@ -36,4 +38,4 @@ This app is inspired by Angela Yu todo list design from one of her Udemy course.
 
 ## Demo
 
-You can view the live demo of this application by visiting this [link](https://peterihimire.github.io/benkih-todolist-v2)
+You can view the live demo of this application by visiting this [link](https://peterihimire.github.io/benkih-todo-v2)
